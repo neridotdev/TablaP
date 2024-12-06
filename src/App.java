@@ -1,7 +1,7 @@
 
 
 public class App {
-    public static int Nel = 119;//Numero Elemento
+    public static int Nel = 118;//Numero Elemento
     public static int NA[]= new int [Nel];//Numero Atomico
     public static String Si[] = new String [Nel];//
     public static String Ne[] = new String [Nel];//Nombre de Elemento
@@ -15,20 +15,19 @@ public class App {
 
     public static void GuardaRegistro(int na, String si, String ne, double pe,
                 double pa, double pf, String va, double de, String ee, String gr){
-    NA[na] = na;
-    Si[na] = si;
-    Ne[na] = ne;
-    PE[na] = pe;
-    PA[na] = pa;
-    PF[na] = pf;
-    VA[na] = va;
-    DE[na] = de;
-    EE[na] = ee;
-    GR[na] = gr;
+    NA[na-1] = na;
+    Si[na-1] = si;
+    Ne[na-1] = ne;
+    PE[na-1] = pe;
+    PA[na-1] = pa;
+    PF[na-1] = pf;
+    VA[na-1] = va;
+    DE[na-1] = de;
+    EE[na-1] = ee;
+    GR[na-1] = gr;
 }//Fin del metodo GuardaRegistro
 
 public static void Datos(){
-
     GuardaRegistro(1,"H", "Hidrógeno", -252.9, 1.008, -259.2, "-1", 0.00008988, "1s1", "Grupo 1");
     GuardaRegistro(2, "He", "Helio",-268.9, 4.0026, -272.2, "--",0.0001786,"1s2", "Grupo 18");
     GuardaRegistro(3, "Li", "Litio", 1342, 6.94, 180.5, "1", 0.534, "2s1", "Grupo 1");
@@ -161,7 +160,7 @@ public static void ImprimeRegistro(int i){
 public static void ImprimeTabla(){
     System.out.println("NA  Si     Ne           PE    PA     PF    VA   DE     EE                   GR");
     System.out.println("=================================================================================");
-    for(int k = 1; k<=118; k++){
+    for(int k = 0; k<118; k++){
         ImprimeRegistro(k);
         }//Fin del ciclo k
     System.out.println("=================================================================================");
@@ -293,10 +292,22 @@ public static void OrdAscxPE(){
         }//Fin del ciclo k
       }//Fin del ciclo v
      }//Fin del metodo OrdAscxPe
+public static void OrdAscxNe(){
+    int n = Ne.length;
+    for(int v = 1; v<=n-1; v++){
+        for(int k = 0; k<=n-2; k++){
+            if(Ne[k+1].compareTo(Ne[k]) != 0){
+                Swap(k);
+            }//Fin del if
+        }//Fin del ciclo k
+      }//Fin del ciclo v
+     }//Fin del metodo OrdAscxPe
+
 
 public static void main(String[] args) {
     Datos();
     OrdAscxPE();
+    OrdAscxNe();
     ImprimeTabla();
 
     }//Fin del metodo main
